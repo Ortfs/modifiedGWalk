@@ -1,0 +1,24 @@
+load "../perturbedWalks.m2"
+--debug Quasidegrees
+--loadPackage "FourTiTwo" 
+R = QQ[a..h]
+A = matrix{ for i to 7 list random(0,16), for i to 7 list random(0,16), for i to 7 list random(0,16), for i to 7 list random(0,16)} 
+
+I = toBinomial(toricMarkov(A), R)
+
+R2 = QQ[a..h, MonomialOrder => Lex]
+
+G1 = gb I
+
+I2 = sub(I,R2)
+
+ 
+
+t1 = elapsedTiming gb I2
+
+--setWalkTrace 3 
+t2 = elapsedTiming groebnerWalk(G1, R2) 
+
+t3 = elapsedTiming groebnerWalk(G1, R2, Strategy => Generic )
+
+t4 = elapsedTiming gfanBuchberger(I2)
