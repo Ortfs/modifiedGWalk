@@ -1,5 +1,6 @@
 --computations from the Table 1 of "The Gröbner walk revisited"(pg.37)
 
+--uncommenting "verboseWalk(...)" gives additional information about the various computations
 
 load "../verboseWalks.m2"  
 
