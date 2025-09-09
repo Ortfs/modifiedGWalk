@@ -13,7 +13,7 @@ f3 = x3 - t^(random 10^4)
 f4 = x4 - t^(random 10^4)
 f5 = x5 - t^(random 10^4)
 
-I = ideal(f1,f2,f3,f4,f5) 
+I = ideal(f1,f2,f3,f4,f5)   
 
 G = gb I 
 
@@ -26,11 +26,13 @@ polylist = {sub(f1,R2), sub(f2,R2), sub(f3,R2), sub(f4,R2), sub(f5,R2)}
 
 t1 = elapsedTiming G1 = gb I2
 
-
+f = t^10000000
+f % I2 --solves the coin exchange problem! 
+--gbTrace = 4 
 
 t2 = elapsedTiming G2 = gfanBuchberger(polylist, "w"=>{1,1,1,1,1,1})
 
---setWalkTrace 3 
+setWalkTrace 3 
 
 t3 = elapsedTiming G3 = groebnerWalk(G, R2) 
 
